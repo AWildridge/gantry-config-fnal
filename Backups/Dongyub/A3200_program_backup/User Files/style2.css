@@ -1,0 +1,74 @@
+html
+{
+	border: 0px;
+	margin: 0px;
+	padding: 0px;
+}
+
+body
+{
+	background-color: #F1F1F1;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	padding: 10px;
+	border: 0px;
+	margin: 0px;
+	width: expression((document.documentElement.clientWidth - 20) + 'px');
+}
+
+div.divider
+{
+	border-width: 0px;
+	border-bottom-width: 2px;
+	border-style: solid;
+	border-color: #143B68;
+	margin-bottom: 14px;
+}
+
+th
+{
+	text-align: left;
+	text-decoration: underline;
+	padding-top: 20px;
+}
+
+
+td.indentHead
+{
+	padding-top: 20px;
+}
+
+td.indent
+{
+	padding-left: 25px;
+}
+
+td.indent2
+{
+	padding-left: 50px;
+}
+
+
+a:link {
+	color: #0000FF;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #0000FF;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #00518B;
+	text-decoration: underline;
+}
+
+a:active {
+	color: #00518B;
+	text-decoration: underline;
+}
+
+tr.alternate {
+	background-color: #FAFAFA;
+}

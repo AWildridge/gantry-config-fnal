@@ -1,0 +1,59 @@
+/* Created by TopStyle Pro Trial Version - www.bradsoft.com */
+body {
+	background-color: #D8E4EF;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+table {
+	border-top: medium;
+	border-bottom: medium;
+	border-right: thin;
+	border-left: thin;
+	border-style: solid;
+	border-color: #4882EA;
+	background-color: #FFFFFF;
+}
+
+.Automation {
+	color: #FCB131;	
+}
+
+.Section {
+	font-weight: bold;
+	color: #004B85;
+}
+
+table.inset {
+	border: hidden;
+	border-style: none;
+	background-color: #FFFFFF;
+}
+
+.ital {
+	font-style: italic;
+}
+
+a:link {
+	color: #0000FF;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #0000FF;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #0000FF;
+	text-decoration: underline;
+}
+
+a:active {
+	color: #0000FF;
+	text-decoration: underline;
+}
+
+tr.alternate {
+	background-color: #F5F5F5;
+}

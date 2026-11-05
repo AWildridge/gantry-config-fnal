@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data_Collection_Configuration culture="en-US" version="1.00">
+      <selectedDimension>One</selectedDimension>
+      <config1d>
+            <DataCollectionConfiguration Period="0.001" Points="1000">
+                  <Axis>
+                        <Item Name="PositionFeedback" ContextKey="0" OptionalArgument="0">
+                              <Tag>
+                                    <Label>PosFbk</Label>
+                                    <Color>-8388480</Color>
+                                    <Visible>True</Visible>
+                                    <Argument>False</Argument>
+                                    <ScaleFactor>1</ScaleFactor>
+                                    <Offset>0</Offset>
+                              </Tag>
+                        </Item>
+                        <Item Name="CurrentFeedback" ContextKey="0" OptionalArgument="0">
+                              <Tag>
+                                    <Label>CurFbk</Label>
+                                    <Color>-65536</Color>
+                                    <Visible>True</Visible>
+                                    <Argument>False</Argument>
+                                    <ScaleFactor>1</ScaleFactor>
+                                    <Offset>0</Offset>
+                              </Tag>
+                        </Item>
+                        <Item Name="PositionFeedback" ContextKey="1" OptionalArgument="0">
+                              <Tag>
+                                    <Label>PosFbk</Label>
+                                    <Color>-8388480</Color>
+                                    <Visible>True</Visible>
+                                    <Argument>False</Argument>
+                                    <ScaleFactor>1</ScaleFactor>
+                                    <Offset>0</Offset>
+                              </Tag>
+                        </Item>
+                        <Item Name="CurrentFeedback" ContextKey="1" OptionalArgument="0">
+                              <Tag>
+                                    <Label>CurFbk</Label>
+                                    <Color>-65536</Color>
+                                    <Visible>True</Visible>
+                                    <Argument>False</Argument>
+                                    <ScaleFactor>1</ScaleFactor>
+                                    <Offset>0</Offset>
+                              </Tag>
+                        </Item>
+                        <Item Name="PositionError" ContextKey="0" OptionalArgument="0">
+                              <Tag>
+                                    <Label>PosErr</Label>
+                                    <Color>-16776961</Color>
+                                    <Visible>True</Visible>
+                                    <Argument>False</Argument>
+                                    <ScaleFactor>1</ScaleFactor>
+                                    <Offset>0</Offset>
+                              </Tag>
+                        </Item>
+                        <Item Name="VelocityFeedback" ContextKey="0" OptionalArgument="0">
+                              <Tag>
+                                    <Label>VelFbk</Label>
+                                    <Color>-8388480</Color>
+                                    <Visible>True</Visible>
+                                    <Argument>False</Argument>
+                                    <ScaleFactor>1</ScaleFactor>
+                                    <Offset>0</Offset>
+                              </Tag>
+                        </Item>
+                        <Item Name="PositionError" ContextKey="1" OptionalArgument="0">
+                              <Tag>
+                                    <Label>PosErr</Label>
+                                    <Color>-16776961</Color>
+                                    <Visible>True</Visible>
+                                    <Argument>False</Argument>
+                                    <ScaleFactor>1</ScaleFactor>
+                                    <Offset>0</Offset>
+                              </Tag>
+                        </Item>
+                        <Item Name="VelocityFeedback" ContextKey="1" OptionalArgument="0">
+                              <Tag>
+                                    <Label>VelFbk</Label>
+                                    <Color>-8388480</Color>
+                                    <Visible>True</Visible>
+                                    <Argument>False</Argument>
+                                    <ScaleFactor>1</ScaleFactor>
+                                    <Offset>0</Offset>
+                              </Tag>
+                        </Item>
+                  </Axis>
+                  <Task />
+                  <System />
+                  <PlcVariables />
+                  <FieldbusVariables />
+            </DataCollectionConfiguration>
+      </config1d>
+      <config2d>
+            <DataCollectionConfiguration Period="0.001" Points="1000">
+                  <Axis />
+                  <Task />
+                  <System />
+                  <PlcVariables />
+                  <FieldbusVariables />
+            </DataCollectionConfiguration>
+      </config2d>
+</Data_Collection_Configuration>

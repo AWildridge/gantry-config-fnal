@@ -1,0 +1,40 @@
+#INCLUDE "MPGInclude.pgm"
+DVAR $COUNTER 
+
+
+ENABLE X Y Z
+G91
+;G90  ;Absolute
+
+'Initialize the counter to zero
+$COUNTER = 0
+RAMP RATE 10
+'MSGDISPLAY 1, "Hello, World!"
+
+F 100
+
+WHILE $COUNTER < 1 DO
+	HOME X Y Z
+	;G1 X 100 Y 100 F 100
+	;G1 X 100 Y 100
+	G1 X 100
+	EnableMPG 
+
+
+	;G0 X -100 Y -100
+	;G0 X 100 Y 100
+	;G1 X -100 Y -100
+	'switch to G90 absolute and execute the following
+	;G90 G0 X 0 Y 0 Z 0
+	;G91 'switch back to incremental mode
+	;DWELL 5
+	;G0 Z -20
+	'DWELL 5
+	;G0 Z 20
+	'Increment the loop counter
+	WHILE 1 == 1 DO
+		$COUNTER = $COUNTER + 1
+	ENDWHILE
+ENDWHILE
+DisableMPG 
+DISABLE X Y Z 
