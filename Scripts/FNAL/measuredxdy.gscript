@@ -1,0 +1,14 @@
+HOME if-needed
+MOVENAME etl_chuck_1 50
+
+@RET
+MPGON
+VIDEO
+GETPOS $pi
+VIDEO
+GETPOS $pf
+SUB $delta $pf $pi
+PRINT "%f %f" $delta.x $delta.y
+MPGOFF
+WAIT 1000
+GOTO @RET

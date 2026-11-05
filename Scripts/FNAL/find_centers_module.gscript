@@ -1,0 +1,45 @@
+LOADCONFIG
+LOADCONFIG "" Scripts\ETLModules\ThroughPut\TP_Config.txt
+
+GETINTPOPUP $chuck_num "Which module chuck? [1,2,3]"
+COPY $n 0
+
+SETVAC "etl_chuck_{$chuck_num}" 1
+MPGON
+SETLIGHT 10
+
+HOME if-needed
+MOVENAME "etl_chuck_{$chuck_num}" 50
+XPRINT " Chuck %d" $chuck_num
+
+@RETURN
+VIDEO
+GETPOS $tr
+MOVEREL {53.5,0,0} 20
+VIDEO
+GETPOS $br
+MOVEREL {0,39.1,0} 20
+VIDEO
+GETPOS $bl
+MOVEREL {-53.5,0,0} 20
+VIDEO
+GETPOS $tl
+INC $n $n
+
+FIT $pos $rot $_ Module_PCB $tr $br $bl $tl
+XPRINT %v $pos
+XPRINT %q $rot
+XPRINT
+MOVETO $pos 20
+WAIT 1000
+MOVETO $tl 20
+MOVEREL {0,11.75,0} 20
+GOTOIF @RETURN `$n<4`
+
+SETVAC "etl_chuck_{$chuck_num}" 0
+MPGOFF
+SETLIGHT 0
+MOVENAME home 50
+HOME
+
+END

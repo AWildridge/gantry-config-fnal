@@ -1,0 +1,63 @@
+LOADCONFIG
+LOADCONFIG "" Scripts\ETLModules\ThroughPut\TP_Config.txt
+COPY $x {19.5,0,0}
+COPY $y {0,19,0}
+COPY $j 1
+
+MPGON
+SETLIGHT 10
+
+HOME if-needed
+MOVENAME "etl_chuck_4" 50
+MOVEREL {0,0,46} 50
+
+@LOOOP
+COPY $i $j
+@LOOP
+GOTOIF @dontinvert_1 `$i<9`
+INVERT $x $x
+INVERT $y $y
+@dontinvert_1
+SETVAC etl_chuck_4_pos_{$i} 1
+VIDEO
+GETPOS $bl
+MOVEREL $y 10
+VIDEO
+GETPOS $br
+MOVEREL $x 10
+VIDEO
+GETPOS $tr
+INVERT $y $y
+MOVEREL $y 10
+INVERT $y $y
+VIDEO
+GOTOIF @dontinvert_2 `$i<9`
+INVERT $x $x
+INVERT $y $y
+@dontinvert_2
+GETPOS $tl
+
+FIT $pos $rot $_ ETROC $tr $br $bl $tl
+QUAT2EULER $Y $P $R $rot        # Yaw, Pitch, Roll
+XPRINT %d $i
+XPRINT "Euler angles:"
+XPRINT %v {$Y,$P,$R}
+XPRINT "To Config File:"
+XPRINT %v $pos
+XPRINT %q $rot
+XPRINT
+GETPOS $p
+MOVETO $pos 20
+WAIT 2000
+MOVETO $p 20
+COPY $i `$i+4`
+GOTOIF @LOOP `$i<i=16`
+INC $j $j
+GOTOIF @LOOOP `$j<i=4`
+
+END
+
+MPGOFF
+SETLIGHT 0
+
+END

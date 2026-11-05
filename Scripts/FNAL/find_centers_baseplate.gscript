@@ -1,0 +1,29 @@
+LOADCONFIG
+LOADCONFIG "" Scripts\ETLModules\ThroughPut\TP_Config.txt
+
+MPGON
+SETLIGHT 25
+
+VIDEO
+GETPOS $tl
+MOVEREL {42.1,0,0} 20
+VIDEO
+GETPOS $tr
+MOVEREL {2,57.5,0} 20
+VIDEO
+GETPOS $br
+MOVEREL {-44.1,0,0} 20
+VIDEO
+GETPOS $bl
+
+MPGOFF
+SETLIGHT 0
+
+FIT $pos $rot $_ BP $tr $br $bl $tl
+QUAT2EULER $Y $P $R $rot
+
+XPRINT %v {$Y,$P,$R}
+XPRINT %v $pos
+XPRINT %q $rot
+
+END

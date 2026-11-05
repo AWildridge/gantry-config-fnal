@@ -1,0 +1,35 @@
+LOADCONFIG
+LOADCONFIG "" Config\etl_assembly_positions.txt
+
+COPY $n 0
+SETVAC etl_chuck_4 1
+HOME
+SETLIGHT 10
+
+@RETURN
+MOVEREL {401.054000,0.000000,0.000000} 50
+MOVEREL {0.000000,502.681000,0.000000} 50
+MOVEREL {0.000000,0.000000,101.160350} 50
+
+SETLOG "_.txt"
+SNAPSHOT gantryhead "Stress Test\stress_test_{`$n+1`}.png"
+AUTOFOCUS $_ 0.4 0 autoclose
+FINDFID $pos ETL_ETROC_PCB_Mockup
+SNAPSHOT gantryhead "Stress Test\stress_test_focus_{`$n+1`}.png"
+SETLOG "Stress Test\2022_11_08_gantry_stress_test.csv"
+PRINT "%f, %f, %f" $pos.x $pos.y $pos.z
+SETLOG "Stress Test\2022_11_08_gantry_stress_test_sans.csv"
+XPRINT "%f, %f, %f" $pos.x $pos.y $pos.z
+
+MOVEREL {0.000000,0.000000,-101.160350} 50
+MOVEREL {0.000000,-502.681000,0.000000} 50
+MOVETO {0.000000,0.000000,0.000000} 50
+
+INC $n $n
+GOTOIF @RETURN `$n<10000`
+
+SETLIGHT 0
+SETVAC etl_chuck_4 0
+MOVENAME home 50
+HOME
+END

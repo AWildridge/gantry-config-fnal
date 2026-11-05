@@ -1,0 +1,84 @@
+SETERRORMODE setvar
+COPY $NXY 6
+COPY $Nfid 100
+COPY $dx {0.000000,0.000000,0.000000}
+COPY $dy {0.000000,0.000000,0.000000}
+COPY $dx.x `0.472000/$NXY`
+MUL $dx.x $dx.x -1
+COPY $dy.x 0.472000
+COPY $dy.y `0.168000/$NXY`
+MUL $dy.y $dy.y -1
+COPY $N {0,0,0} # x: Iterator - posloopx, y: posloopy, z: fidloop
+
+HOME if-needed
+SETVAC etl_chuck_1_pos_1 1
+MOVESAFE {28.491000,354.725000,101.989750} 50
+SETLIGHT 20
+MPGON
+VIDEO
+MPGOFF
+GETPOS $cen
+
+MOVEREL {0.244000,0.104000,0.000000} 1
+WAIT 1000
+GETPOS $pos
+SUB $deltapos $cen $pos
+GOTO @FIDLOOP
+
+@POSLOOPY
+  MOVEREL $dy 10
+  WAIT 1000
+  INC $N.y $N.y
+  GETPOS $pos
+  SUB $deltapos $cen $pos
+  GOTO @FIDLOOP
+  @POSLOOPX
+    MOVEREL $dx 10
+    WAIT 1000
+    INC $N.x $N.x
+    GETPOS $pos
+    SUB $deltapos $cen $pos
+    @FIDLOOP
+      FINDFID $fid ETL_Baseplate_PCB_Mockup
+      SUB $deltafid $fid $cen
+      INC $N.z $N.z
+      GOTOIF @ERRLOOP $ERR
+      SETLOG "fidscan\fidscan.csv"
+      XPRINT "%d,%d,%f,%f,%f,%f" $N.x $N.y $deltapos.x $deltapos.y $fid.x $fid.y
+      SETLOG "_.txt"
+      CLEARLOG
+    GOTOIF @FIDLOOP `$N.z<$Nfid`
+    COPY $N.z 0
+    SNAPSHOT gantryhead "fidscan\img\{$N.x:%d}_{$N.y:%d}_{$deltapos.x:%f}_{$deltapos.y:%f}.png"
+  GOTOIF @POSLOOPX `$N.x<$NXY`
+  COPY $N.x 0
+GOTOIF @POSLOOPY `$N.y<$NXY`
+COPY $N.y 0
+
+SETLOG "fidscan\fidscan.csv"
+XPRINT "%f,%f" $cen.x $cen.y
+XPRINT "%d,%d" $NXY $Nfid
+SETLOG "_.txt"
+CLEARLOG
+
+SETERRORMODE default
+SETLIGHT 0
+SETVAC etl_chuck_1_pos_1 0
+MOVENAME home 100
+HOME
+END
+
+@ERRLOOP
+SETLOG "fidscan\fidscan.csv"
+XPRINT "%d,%d,%f,%f,-11,-11" $N.x $N.y $deltapos.x $deltapos.y
+SETLOG "_.txt"
+CLEARLOG
+GOTO @FIDLOOP
+
+# CN: {178.944000,98.808000,87.915000}
+# TL: 179.188000,98.912000,87.915000
+# TR: 178.716000,98.912000,87.915000
+# BR: 178.716000,98.744000,87.915000
+# BL: 179.188000,98.744000,87.915000
+
+# w = 0.472, h = 0.168
