@@ -12,8 +12,8 @@ chuck_number.top: 4
 # -0.5
 
 # Light levels
-default.light_low_int: 20 #35 for pcb dummies
-default.light_high_int: 60
+default.light_low_int: 35 #20 for real
+default.light_high_int: 70
 
 # Chuck 1
 default.Module_PCB.1.1.pos: {68.750936,157.408390,31.165510}

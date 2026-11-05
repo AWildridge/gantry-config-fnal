@@ -1,0 +1,7 @@
+### get local coordinate
+
+1. COPY $pos {68.750936,157.408390,31.165510} ### chuck 1 default Module_PCB 1 position
+2. COPY $rot {-0.000490,0.000382,-0.706188,0.708024} ### chuck 1 default Module_PCB 1 rotation
+3. COPY $global {x,y,z coordinate of global} ### check on video!
+4. TRANSFORMG2L $local $global $pos $rot ### transform from global to local
+5. PRINT "local: %v" $local   ### check local coordinate

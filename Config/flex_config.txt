@@ -16,6 +16,11 @@ camera.gantryhead.serial_number: "4103627983"
 camera.gantryhead.FOV-x: 1.100 #1.400
 camera.gantryhead.FOV-y: 0.824 #1.048
 camera.gantryhead.horizontalMirror: False
+camera.gantryhead.config_file: "test_config.ini"
+
+# For upgrade
+#camera.gantryhead.driver: peak
+#camera.gantryhead.serial_number: "UI348xML-M|4103627983"
 
 # The following 2 lines are for the case where the image coming from the camera
 # does *not* have the gantry's positive x-axis pointing to the right and positive
